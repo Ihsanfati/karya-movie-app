@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import CustomTextInput from '../components/customTextInput';
 import CustomButton from '../components/customButton';
 
-const Search = () => (
-  <View style={styles.container}>
-    <CustomTextInput
-				placeholder="Search..."
+const Search = () => {
+  const [ movieTitle, setMovieTitle ] = useState("");
+  return(
+    <View style={styles.container}>
+      <CustomTextInput
+        placeholder="Search..."
+        onChange={setMovieTitle}
         numberOfLines={1}
         multiline={false}
+        defaultValue={movieTitle}
       />
-    <CustomButton
-      backgroundColor="#DDD"
-      color="#203239"
-      text="Search"
-      width="100%"
-      onPress={() => {}}
-    />
-  </View>
-);
+      <CustomButton
+        backgroundColor="#DDD"
+        color="#203239"
+        text="Search"
+        width="100%"
+        onPress={() => {console.log(movieTitle)}}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

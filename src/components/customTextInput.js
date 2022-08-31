@@ -8,10 +8,11 @@ import {
 } from "react-native";
 
 const CustomTextInput = ({
-  text,
-  multiline,
-  numberOfLines,
-  placeholder
+    placeholder,
+    onChange,
+    text,
+    multiline,
+    numberOfLines,
 }) => {
   const styles = StyleSheet.create({
     textInputWrapper: {
@@ -30,6 +31,7 @@ const CustomTextInput = ({
         multiline={multiline}
         numberOfLines={numberOfLines}
         style={styles.input}
+        onChangeText={onChange}
         placeholder={placeholder}
         defaultValue={text}
       />
@@ -41,7 +43,8 @@ CustomTextInput.propTypes = {
   text: PropTypes.string,
   multiline: PropTypes.bool.isRequired,
   numberOfLines: PropTypes.number.isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func.isRequired
 };
 
 CustomTextInput.defaultProps = {
