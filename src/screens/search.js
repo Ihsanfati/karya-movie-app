@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import CustomTextInput from '../components/customTextInput';
+import CustomButton from '../components/customButton';
 
 const Search = () => (
   <View style={styles.container}>
@@ -10,6 +11,13 @@ const Search = () => (
         numberOfLines={1}
         multiline={false}
       />
+    <CustomButton
+      backgroundColor="#DDD"
+      color="#203239"
+      text="Search"
+      width="100%"
+      onPress={() => {}}
+    />
   </View>
 );
 
