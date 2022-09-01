@@ -9,8 +9,8 @@ import CustomButton from '../components/customButton';
 import { BASE_URL, API_KEY } from '../constants';
 
 const normalSizeStyle = {
-  width: 150,
-  height: 180,
+  width: 320,
+  height: 420,
 };
 
 const Search = ({navigation}) => {
@@ -37,9 +37,10 @@ const Search = ({navigation}) => {
   switch(status) {
     case 'success':
       return(
-        <View style={styles.marginTop20}>
-          <View style={styles.marginTop20}>
+        <View style={{padding: 20}}>
+          <View >
             <FlatList
+              snapToInterval={280}
               showsHorizontalScrollIndicator={false}
               horizontal
               data={movieList}
@@ -51,6 +52,15 @@ const Search = ({navigation}) => {
                 />
               )}
               keyExtractor={item => item.id}
+            />
+          </View>
+          <View style={styles.spacerTop}>
+            <CustomButton
+              backgroundColor="#247881"
+              color="#fff"
+              text="Return to Search"
+              width="100%"
+              onPress={() => {setStatus("back")}}
             />
           </View>
         </View>
