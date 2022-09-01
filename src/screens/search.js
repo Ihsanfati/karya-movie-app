@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import CustomTextInput from '../components/customTextInput';
 import CustomButton from '../components/customButton';
@@ -8,6 +8,7 @@ const Search = () => {
   const [ movieTitle, setMovieTitle ] = useState("");
   return(
     <View style={styles.container}>
+      <Text style={styles.pageTitle}>Cari Film</Text>
       <CustomTextInput
         placeholder="Search..."
         onChange={setMovieTitle}
@@ -15,13 +16,15 @@ const Search = () => {
         multiline={false}
         defaultValue={movieTitle}
       />
-      <CustomButton
-        backgroundColor="#DDD"
-        color="#203239"
-        text="Search"
-        width="100%"
-        onPress={() => {console.log(movieTitle)}}
-      />
+      <View style={styles.spacerTop}>
+        <CustomButton
+          backgroundColor="#247881"
+          color="#fff"
+          text="Search"
+          width="100%"
+          onPress={() => {console.log(movieTitle)}}
+        />
+      </View>
     </View>
   );
 };
@@ -32,6 +35,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 20,
+  },
+  pageTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    textAlign: "center",
+    color: "#203239",
+  },
+  spacerTop: {
+    marginTop: 30
   }
 });
 
