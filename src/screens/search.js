@@ -1,11 +1,31 @@
 import React, { useState }from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import axios from 'axios';
+
 import CustomTextInput from '../components/customTextInput';
 import CustomButton from '../components/customButton';
+import { BASE_URL, API_KEY } from '../constants';
 
 const Search = () => {
   const [ movieTitle, setMovieTitle ] = useState("");
+  const [ movieList, setMovieList ] = useState([]);
+  const [ status, setStatus ] = useState("");
+
+  const searchMovie = () => {
+    axios
+    .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieTitle}`)
+    .then(response => {
+      setMovieList(response.data.results);
+      setStatus('success');
+      console.log(status);
+      console.log(movieList);
+    })
+    .catch(errorResponse => {
+      setStatus('failed');
+    });
+  }
+
   return(
     <View style={styles.container}>
       <Text style={styles.pageTitle}>Cari Film</Text>
@@ -22,7 +42,7 @@ const Search = () => {
           color="#fff"
           text="Search"
           width="100%"
-          onPress={() => {console.log(movieTitle)}}
+          onPress={() => {searchMovie()}}
         />
       </View>
     </View>
