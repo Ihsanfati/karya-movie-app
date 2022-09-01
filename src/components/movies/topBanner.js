@@ -9,7 +9,7 @@ import {View, FlatList, Text, ActivityIndicator} from 'react-native';
 import MovieItem from './movieItem';
 
 const bannerSizeStyle = {
-  width: 280,
+  width: 320,
   height: 180,
 };
 

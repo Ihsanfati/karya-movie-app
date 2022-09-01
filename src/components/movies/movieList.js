@@ -14,7 +14,7 @@ import MovieItem from './movieItem';
 
 const normalSizeStyle = {
   width: 150,
-  height: 180,
+  height: 210,
 };
 
 const MovieList = ({title, route, navigation}) => {

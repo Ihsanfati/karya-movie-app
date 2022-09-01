@@ -60,7 +60,11 @@ const Search = ({navigation}) => {
               color="#fff"
               text="Return to Search"
               width="100%"
-              onPress={() => {setStatus("back")}}
+              onPress={() => {
+                setMovieList([])
+                setMovieTitle("")
+                setStatus("back")
+              }}
             />
           </View>
         </View>
@@ -88,7 +92,24 @@ const Search = ({navigation}) => {
       </View>
       )
     case 'failed':
-      return <View><Text>Data cannot be fetched...</Text></View>
+      return(
+        <View style={{padding: 20}}>
+          <Text style={styles.pageTitle}>Cari dengan benar !!</Text>
+          <View style={styles.spacerTop}>
+            <CustomButton
+              backgroundColor="#247881"
+              color="#fff"
+              text="Return to Search"
+              width="100%"
+              onPress={() => {
+                setMovieList([])
+                setMovieTitle("")
+                setStatus("back")
+              }}
+            />
+          </View>
+        </View>
+      )
     default:
       return(
         <View style={styles.container}>

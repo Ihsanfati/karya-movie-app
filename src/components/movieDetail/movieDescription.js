@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+    textAlign: 'justify'
   },
   movieInfoWrapper: {
     marginTop: 10,
