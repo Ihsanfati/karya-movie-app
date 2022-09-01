@@ -17,7 +17,9 @@ const Search = () => {
     .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieTitle}`)
     .then(response => {
       setMovieList(response.data.results);
-      setStatus('success');
+      if (movieList.length != 0) {
+        setStatus("success");
+      }
       console.log(status);
       console.log(movieList);
     })
@@ -26,27 +28,56 @@ const Search = () => {
     });
   }
 
-  return(
-    <View style={styles.container}>
-      <Text style={styles.pageTitle}>Cari Film</Text>
-      <CustomTextInput
-        placeholder="Search..."
-        onChange={setMovieTitle}
-        numberOfLines={1}
-        multiline={false}
-        defaultValue={movieTitle}
-      />
-      <View style={styles.spacerTop}>
-        <CustomButton
-          backgroundColor="#247881"
-          color="#fff"
-          text="Search"
-          width="100%"
-          onPress={() => {searchMovie()}}
+  switch(status) {
+    case 'success':
+      return <View><Text>Data has been fetched successfully</Text></View>
+    case 'back':
+      return(
+        <View style={styles.container}>
+        <Text style={styles.pageTitle}>Cari Film</Text>
+        <CustomTextInput
+          placeholder="Search..."
+          onChange={setMovieTitle}
+          numberOfLines={1}
+          multiline={false}
+          defaultValue={movieTitle}
         />
+        <View style={styles.spacerTop}>
+          <CustomButton
+            backgroundColor="#247881"
+            color="#fff"
+            text="Search"
+            width="100%"
+            onPress={() => {searchMovie()}}
+          />
+        </View>
       </View>
-    </View>
-  );
+      )
+    case 'failed':
+      return <View><Text>Data cannot be fetched...</Text></View>
+    default:
+      return(
+        <View style={styles.container}>
+        <Text style={styles.pageTitle}>Cari Film</Text>
+        <CustomTextInput
+          placeholder="Search..."
+          onChange={setMovieTitle}
+          numberOfLines={1}
+          multiline={false}
+          defaultValue={movieTitle}
+        />
+        <View style={styles.spacerTop}>
+          <CustomButton
+            backgroundColor="#247881"
+            color="#fff"
+            text="Search"
+            width="100%"
+            onPress={() => {searchMovie()}}
+          />
+        </View>
+      </View>
+      )
+  }
 };
 
 const styles = StyleSheet.create({
